@@ -1,0 +1,82 @@
+- id: '1584783074117'
+  name: Kitchen Night
+  entities:
+    light.kitchen_lights:
+      brightness: 20
+      friendly_name: Kitchen 1
+      rgb_color:
+      - 255
+      - 218
+      - 182
+      state: 'on'
+      supported_features: 49
+- id: '1584783188348'
+  name: Kitchen Off
+  entities:
+    light.kitchen_1:
+      friendly_name: Kitchen 1
+      state: 'off'
+      supported_features: 49
+    light.kitchen_2:
+      friendly_name: Kitchen 2
+      state: 'off'
+      supported_features: 49
+    light.kitchen_3:
+      friendly_name: Kitchen 3
+      state: 'off'
+      supported_features: 49
+    light.kitchen_lights:
+      friendly_name: Kitchen Lights
+      state: 'off'
+      supported_features: 49
+- id: '1584784273841'
+  name: Study On
+  entities:
+    light.study_1:
+      brightness: 254
+      friendly_name: Study 1
+      rgb_color:
+      - 255
+      - 232
+      - 204
+      state: 'on'
+      supported_features: 49
+- id: '1584784332470'
+  name: Study Off
+  entities:
+    light.study_1:
+      friendly_name: Study 1
+      state: 'off'
+      supported_features: 49
+- id: '1584784398711'
+  name: Kitchen and Study On
+  entities:
+    light.kitchen_lights:
+      brightness: 254
+      friendly_name: Kitchen 1
+      rgb_color:
+      - 255
+      - 232
+      - 204
+      state: 'on'
+      supported_features: 49
+    light.study_1:
+      brightness: 254
+      friendly_name: Study 1
+      rgb_color:
+      - 255
+      - 232
+      - 204
+      state: 'on'
+      supported_features: 49
+- id: '1584784457930'
+  name: Kitchen and Study Off
+  entities:
+    light.kitchen_lights:
+      friendly_name: Kitchen 1
+      state: 'off'
+      supported_features: 49
+    light.study_1:
+      friendly_name: Study 1
+      state: 'off'
+      supported_features: 49

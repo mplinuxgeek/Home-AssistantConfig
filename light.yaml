@@ -1,0 +1,6 @@
+- platform: group
+  name: "Kitchen Lights"
+  entities:
+    - light.0x000d6ffffe053adc_light
+    - light.0x14b457fffe7243b5_light
+    - light.0x14b457fffe526c06_light

@@ -1,0 +1,237 @@
+- id: '1584782761169'
+  alias: Motion - Turn On Kitchen Lights
+  description: ''
+  trigger:
+  - device_id: 339fc8bd21204763bf6fd674188d1d44
+    domain: binary_sensor
+    entity_id: binary_sensor.0x00158d0002b73089_occupancy
+    platform: device
+    type: motion
+  condition:
+  - below: 10
+    condition: device
+    device_id: 5bd80737266f45839d74f64e4a1191ef
+    domain: sensor
+    entity_id: sensor.0x00158d0002b73089_illuminance
+    type: is_illuminance
+  action:
+  - data_template:
+      brightness: '{% if((now().hour <= 6) or (now().hour >= 22))%}20 {% elif now().hour
+        >= 20 %}128 {% else %}254 {% endif %}'
+    entity_id: light.kitchen_lights
+    service: light.turn_on
+- id: '1584873243943'
+  alias: Motion - Turn Off Kitchen Lights
+  description: ''
+  trigger:
+  - device_id: 339fc8bd21204763bf6fd674188d1d44
+    domain: binary_sensor
+    entity_id: binary_sensor.0x00158d0002b73089_occupancy
+    for:
+      hours: 0
+      minutes: 1
+      seconds: 30
+    platform: device
+    type: no_motion
+  condition:
+  - below: 10
+    condition: device
+    device_id: 5bd80737266f45839d74f64e4a1191ef
+    domain: sensor
+    entity_id: sensor.0x00158d0002b73089_illuminance
+    type: is_illuminance
+  action:
+  - data: {}
+    entity_id: light.kitchen_lights
+    service: light.turn_off
+- id: '1587601776514'
+  alias: Turn On Dining Room Lights
+  description: ''
+  trigger:
+  - device_id: d54fe294f2bc492ca57e48cf658dda32
+    discovery_id: 0xec1bbdfffec45216 click_on
+    domain: mqtt
+    platform: device
+    subtype: 'on'
+    type: click
+  condition: []
+  action:
+  - data_template:
+      brightness: '{% if((now().hour <= 6) or (now().hour >= 22))%}20 {% elif now().hour
+        >= 20 %}128 {% else %}254 {% endif %}'
+    entity_id: light.0x90fd9ffffe15311d_light
+    service: light.toggle
+- id: '1588065814936'
+  alias: Toggle Kitchen Lights
+  description: ''
+  trigger:
+  - device_id: f98a0e24654c4340b77a55916fd49a27
+    discovery_id: 0x90fd9ffffe598931 action_toggle
+    domain: mqtt
+    platform: device
+    subtype: toggle
+    type: action
+  - device_id: ecd58e82f220431d97eacef00c4fcd34
+    discovery_id: 0x00158d0003960e8b click_double
+    domain: mqtt
+    platform: device
+    subtype: double
+    type: click
+  condition: []
+  action:
+  - data_template:
+      brightness: '{% if((now().hour <= 6) or (now().hour >= 22))%}20 {% elif now().hour
+        >= 20 %}128 {% else %}254 {% endif %}'
+    entity_id: light.kitchen_lights
+    service: light.toggle
+- id: '1588066883795'
+  alias: Toggle Study Lights
+  description: ''
+  trigger:
+  - device_id: ecd58e82f220431d97eacef00c4fcd34
+    discovery_id: 0x00158d0003960e8b click_single
+    domain: mqtt
+    platform: device
+    subtype: single
+    type: click
+  condition: []
+  action:
+  - data: {}
+    entity_id: light.0x14b457fffef68f12_light
+    service: light.toggle
+- id: '1588067133060'
+  alias: Turn Off All Lights
+  description: ''
+  trigger:
+  - device_id: ecd58e82f220431d97eacef00c4fcd34
+    discovery_id: 0x00158d0003960e8b click_long_release
+    domain: mqtt
+    platform: device
+    subtype: long_release
+    type: click
+  condition: []
+  action:
+  - data: {}
+    entity_id: light.kitchen_lights
+    service: light.turn_off
+  - data: {}
+    entity_id: light.0x14b457fffef68f12_light
+    service: light.turn_off
+  - data: {}
+    entity_id: light.0x90fd9ffffe15311d_light
+    service: light.turn_off
+- id: '1588067197529'
+  alias: Toggle Dining Room Lamp
+  description: ''
+  trigger:
+  - device_id: ecd58e82f220431d97eacef00c4fcd34
+    discovery_id: 0x00158d0003960e8b click_triple
+    domain: mqtt
+    platform: device
+    subtype: triple
+    type: click
+  condition: []
+  action:
+  - data_template:
+      brightness: '{% if((now().hour <= 6) or (now().hour >= 22))%}20 {% elif now().hour
+        >= 20 %}128 {% else %}254 {% endif %}'
+    entity_id: light.0x90fd9ffffe15311d_light
+    service: light.toggle
+- id: '1588068050385'
+  alias: Toggle Master Bedroom Lap Main Light
+  description: ''
+  trigger:
+  - device_id: 88a2e5ed2fa8416985d4efc8cf83c7a9
+    discovery_id: 0xec1bbdfffed1ce06 click_on
+    domain: mqtt
+    platform: device
+    subtype: 'on'
+    type: click
+  - device_id: 91626ba060ef4949bf93349b9e619f36
+    discovery_id: 0xec1bbdfffed57d29 click_on
+    domain: mqtt
+    platform: device
+    subtype: 'on'
+    type: click
+  condition: []
+  action:
+  - data_template:
+      brightness: '{% if((now().hour <= 6) or (now().hour >= 22))%}20 {% elif now().hour
+        >= 20 %}128 {% else %}254 {% endif %}'
+    entity_id: light.0x90fd9ffffe292a2c_light
+    service: light.toggle
+- id: '1588068082619'
+  alias: Toggle Master Bedroom Lap Reading Light
+  description: ''
+  trigger:
+  - device_id: 88a2e5ed2fa8416985d4efc8cf83c7a9
+    discovery_id: 0xec1bbdfffed1ce06 click_off
+    domain: mqtt
+    platform: device
+    subtype: 'off'
+    type: click
+  - device_id: 91626ba060ef4949bf93349b9e619f36
+    discovery_id: 0xec1bbdfffed57d29 click_off
+    domain: mqtt
+    platform: device
+    subtype: 'off'
+    type: click
+  condition: []
+  action:
+  - data_template:
+      brightness: '{% if((now().hour <= 6) or (now().hour >= 22))%}20 {% elif now().hour
+        >= 20 %}128 {% else %}254 {% endif %}'
+    service: light.toggle
+    entity_id: light.0x000b57fffeea6080_light
+- id: '1588074253827'
+  alias: Door - Turn On Back Patio Light
+  description: ''
+  trigger:
+  - device_id: 8d300eb46ef1405d863bc685522fc991
+    domain: binary_sensor
+    entity_id: binary_sensor.0x00158d00029bfc6b_contact
+    platform: device
+    type: opened
+  - device_id: feb194443e144b71ad0d4b37cd29cbe1
+    domain: binary_sensor
+    entity_id: binary_sensor.0x14b457fffe3e37e0_occupancy
+    platform: device
+    type: motion
+  condition:
+  - condition: state
+    entity_id: sun.sun
+    state: below_horizon
+  action:
+  - brightness_pct: 100
+    device_id: 256024b6cc0448169683750095eb4730
+    domain: light
+    entity_id: light.0x000d6ffffefce0a3_light
+    type: turn_on
+- id: '1588074306992'
+  alias: Door - Turn Off Back Patio Light
+  description: ''
+  trigger:
+  - device_id: 8d300eb46ef1405d863bc685522fc991
+    domain: binary_sensor
+    entity_id: binary_sensor.0x00158d00029bfc6b_contact
+    for:
+      hours: 0
+      minutes: 1
+      seconds: 0
+    platform: device
+    type: not_opened
+  - device_id: feb194443e144b71ad0d4b37cd29cbe1
+    domain: binary_sensor
+    entity_id: binary_sensor.0x14b457fffe3e37e0_occupancy
+    for:
+      hours: 0
+      minutes: 1
+      seconds: 0
+    platform: device
+    type: no_motion
+  condition: []
+  action:
+  - device_id: 256024b6cc0448169683750095eb4730
+    domain: light
+    entity_id: light.0x000d6ffffefce0a3_light
+    type: turn_off
