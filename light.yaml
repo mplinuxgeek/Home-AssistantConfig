@@ -1,6 +1,31 @@
 - platform: group
-  name: "Kitchen Lights"
+  name: "Kitchen"
   entities:
     - light.0x000d6ffffe053adc_light
     - light.0x14b457fffe7243b5_light
     - light.0x14b457fffe526c06_light
+
+- platform: group
+  name: "Study"
+  entities:
+    - light.0x14b457fffef68f12_light
+
+- platform: group
+  name: "Dining Room"
+  entities:
+    - light.0x90fd9ffffe15311d_light
+
+- platform: group
+  name: "Back Patio"
+  entities:
+    - light.0x000d6ffffefce0a3_light
+
+- platform: group
+  name: "Master Bedroom"
+  entities:
+    - light.0x90fd9ffffe292a2c_light
+
+- platform: group
+  name: "Master Bedroom Reading"
+  entities:
+    - light.0x000b57fffeea6080_light
